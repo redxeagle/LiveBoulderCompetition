@@ -1,0 +1,11 @@
+<%- if !@participant.nil? %>
+$("#boulder_insert_form").html("<%= escape_javascript(
+                render :partial => "insert_form") %>");
+$("#left").html("<%= escape_javascript(
+                render :partial => "show") %>");
+$("#participant_submit").val("Reset");
+var $tabs = $('#tabs').tabs().scrollabletab();
+<%else%>
+$("#boulder_insert_form").html("Kein Benutzer unter dieser Nummer gefunden");
+$("#left").html("");
+<% end %>

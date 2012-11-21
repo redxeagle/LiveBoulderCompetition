@@ -1,0 +1,35 @@
+%div{"data-role" => "collapsible-set"}
+  - form_for :participant do |form|
+    - if !@participant.power
+      %div{"data-role" => "collapsible"}
+        %h3= "Gelb"
+        - @boulders.yellow.sort_by{|b| b.id}.each do |boulder|
+          %div{"data-role" => "fieldcontain"}
+            - mobile_boulder_tag(@participant, boulder)
+      %div{"data-role" => "collapsible"}
+        %h3= "Blau"
+        - @boulders.blue.sort_by{|b| b.id}.each do |boulder|
+          - mobile_boulder_tag(@participant, boulder)
+      %div{"data-role" => "collapsible"}
+        %h3= "Hell-Grün"
+        - @boulders.lightgreen.sort_by{|b| b.id}.each do |boulder|
+          - mobile_boulder_tag(@participant, boulder)
+      %div{"data-role" => "collapsible"}
+        %h3= "Dunkel-Grün"
+        - @boulders.darkgreen.sort_by{|b| b.id}.each do |boulder|
+          - mobile_boulder_tag(@participant, boulder)
+    - else
+      %div{"data-role" => "collapsible"}
+        %h3= "Dunkel-Grün"
+        - @boulders.darkgreen.sort_by{|b| b.id}.each do |boulder|
+          - mobile_boulder_tag(@participant, boulder)
+      %div{"data-role" => "collapsible"}
+        %h3= "Rot"
+        - @boulders.red.sort_by{|b| b.id}.each do |boulder|
+          - mobile_boulder_tag(@participant, boulder)
+      %div{"data-role" => "collapsible"}
+        %h3= "Grau"
+        - @boulders.grey.sort_by{|b| b.id}.each do |boulder|
+          - mobile_boulder_tag(@participant, boulder)
+    = form.submit "Begehungen abschicken"
+    = hidden_field :participant, :uid

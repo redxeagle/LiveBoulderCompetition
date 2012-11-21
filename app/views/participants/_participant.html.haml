@@ -1,0 +1,30 @@
+%p
+  Nachname:
+  %b= @participant.name
+%p
+  Vorname:
+  %b= @participant.given_name
+%p
+  Geschlecht:
+  %b= @participant.gender
+%p
+  Alter:
+  %b=@participant.age
+%p
+  Wohnort:
+  %b= @participant.location
+-#%p
+-#  schwerster Boulder:
+-#  %b= @participant.difficult_boulder
+%p
+  Power Wertung?
+  %b= @participant.power ? "Ja" : "Nein"
+-#%p
+-#  Student?
+-#  %b= @participant.student ? "Ja" : "Nein"
+-#%p
+-#  privater Modus?
+-#  %b= @participant.private ? "Ja" : "Nein"
+%p
+  Punkte:
+  %b= @participant.points

@@ -1,0 +1,7 @@
+<%- if !@participant.nil? %>
+    $("#boulder_insert_form").html("<%= escape_javascript(
+                render :partial => "insert_form") %>");
+$("#participant_submit").val("Reset");
+<%else%>
+$("#boulder_insert_form").html("Kein Benutzer unter dieser Nummer gefunden");
+<% end %>

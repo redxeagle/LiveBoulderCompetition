@@ -1,0 +1,12 @@
+- content_for :content do
+  %div#fixedbg
+  %div#left
+    %h2 Benutzerseiten
+    %ul#leftmenu
+      %li= link_to "Teilnehmer editieren", participants_path
+
+
+  %div#right
+    = yield
+
+= render :file => 'layouts/application'

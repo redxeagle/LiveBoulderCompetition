@@ -1,0 +1,14 @@
+- state = @participant.ascents.select{|e| e.boulder_id == boulder.id}.first.state
+- number = @participant.power ? boulder.power_number : boulder.relax_number
+
+%p
+  Boulder
+  = number
+  = radio_button_tag "boulders[#{boulder.id}]", "zone", state  == "zone" ? true: false
+  Zone
+  = radio_button_tag "boulders[#{boulder.id}]", "top", state == "top" ? true: false
+  Top
+  = radio_button_tag "boulders[#{boulder.id}]", "flash", state == "flash" ? true: false
+  Flash
+  = radio_button_tag "boulders[#{boulder.id}]", "nichts", state == "nichts" ? true: false
+  Nichts

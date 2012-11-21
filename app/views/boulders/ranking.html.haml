@@ -1,0 +1,60 @@
+%p
+  %div#tabs
+    %ul
+      %li= link_to  "Relax", "#tabs-1"
+      %li= link_to  "Power", "#tabs-2"
+      %li= link_to  "Leipziger", "#tabs-3"
+      %li= link_to  "Senioren", "#tabs-4"
+      %li= link_to  "Kinder", "#tabs-5"
+      %li= link_to  "U 18", "#tabs-6"
+    - if current_user
+      = form_for :filter, :url => :ranking, :remote => true do |f|
+        = f.select :Wertung, [["alle", 1], ["Männer", 2], ["Frauen", 3], ["Kinder (0-12)", 4], ["U18 (13-17) m", 5], ["U18 (13-17) w", 6]]
+        = f.submit :filter
+      = link_to "Beamer Modus", :beamer_modus => true
+    %p
+      = "Wird wieder aktualisiert in: #{120 -(Time.now - @cache_time).to_i} Sekunden"
+    %div#tabs-1
+      %p
+        %table#table-relax.tablesorter
+          = render :partial => 'participants', :locals => {:participants => @participants_relax}
+        %span#tab1
+
+    %div#tabs-2
+      %p
+        %table#table-power.tablesorter
+          = render :partial => 'participants', :locals => {:participants => @participants_power}
+        %span#tab2
+    %div#tabs-3
+      %p
+        %table#table-leipzig.tablesorter
+          = render :partial => 'participants', :locals => {:participants => @participants_leipzig}
+        %span#tab3
+    %div#tabs-4
+      %p
+        %table#table-seniors.tablesorter
+          = render :partial => 'participants', :locals => {:participants => @participants_seniors}
+        %span#tab4
+    %div#tabs-5
+      %p
+        %table#table-all.tablesorter
+          = render :partial => 'participants', :locals => {:participants => @participants_kinder}
+        %span#tab5
+    %div#tabs-6
+      %p
+        %table#table-achtzehn.tablesorter
+          = render :partial => 'participants', :locals => {:participants => @participants_u_18}
+        %span#tab6
+
+:javascript
+  $(document).ready(function() {
+    //later on you can get that data EVEN AFTER a reload
+    var params = getUrlVars()
+    if (params["beamer_modus"] == "true") {
+      start_beamer_modus();
+    }
+  });
+-#= f.select :Wertung, [["alle", 1], ["Männer", 2], ["Frauen", 3], ["Senioren 1 (40-50)" , 9],
+-#                    ["Senioren 2 (51-60)" , 10], ["Senioren 3 (61+)" , 11],
+-#                    ["Studenten", 4], ["Jugend (16-18)", 5], ["Jugend (14-15)", 6],
+-#                    ["Jugend (10-13)", 7], ["Kinder (0-9)", 8]]

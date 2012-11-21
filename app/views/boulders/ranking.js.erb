@@ -1,0 +1,15 @@
+$("#table-relax").html("<%= escape_javascript(
+                render :partial => 'participants', :locals => {:participants => @participants_relax}) %>");
+$("#table-relax").tablesorter();
+$("#table-power").html("<%= escape_javascript(
+                render :partial => 'participants', :locals => {:participants => @participants_power}) %>");
+$("#table-power").tablesorter();
+$("#table-leipzig").html("<%= escape_javascript(
+                render :partial => 'participants', :locals => {:participants => @participants_leipzig}) %>");
+$("#table-leipzig").tablesorter();
+$("#table-all").html("<%= escape_javascript(
+                render :partial => 'participants', :locals => {:participants => @participants_kinder}) %>");
+$("#table-all").tablesorter();
+$("#table-achtzehn").html("<%= escape_javascript(
+                render :partial => 'participants', :locals => {:participants => @participants_u_18}) %>");
+$("#table-achtzehn").tablesorter();

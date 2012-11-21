@@ -1,0 +1,12 @@
+- if @participant.gender == "weiblich"
+  %div.fieldset_female
+    = render :partial => "participant"
+- else
+  %div.fieldset
+    = render :partial => "participant"
+
+
+
+  -#%p
+  -#  %b Erstbegehungspunkte:
+  -#  = @participant.points_of_first_ascents

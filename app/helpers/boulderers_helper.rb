@@ -1,0 +1,2 @@
+module BoulderersHelper
+end

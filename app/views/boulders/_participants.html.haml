@@ -1,0 +1,17 @@
+-ranking = 1
+%thead
+  %tr
+    %th Platz
+    %th Name
+    %th Anzahl der Begehungen
+    %th Wohnort
+    %th Punkte
+%tbody
+  - participants.each do |participant|
+    %tr
+      %td= ranking
+      %td= participant[0]
+      %td= participant[1]
+      %td= participant[2]
+      %td= participant[3]
+      -ranking = ranking +1

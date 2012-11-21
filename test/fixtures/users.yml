@@ -1,0 +1,46 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+ id: 1
+ email: redxeag@googlemail.com
+ active: true
+ login: redxeagle
+ name: Daniel Seifarth
+ password_salt: FGP2zaBH7MsiLmlhFzl
+ persistence_token: 94a50157078fc337065a5d3cd12e5e1ec328c2093750c19dded81d58183b81f501ecc386775c6ae35909e6309a0e2b936f280e04d103dd54e2e42f5e26104537
+ crypted_password: ad15a64f31f027b2851e0131747001e5b321d9c32c74f550cc1def9c44644bba13d5e4fc34c28e7fbf620a8931bd3a1033025a94ad0e5758453e2d0722f240aa
+ login_count: 0
+ failed_login_count: 0
+
+two:
+ id: 2
+ email: nicolefritzsche@googlemail.com
+ active: true
+ login: Nicole
+ name: Nicole Fritzsche
+ password_salt: DBNsZ0rKZLCSY5pkhjS
+ persistence_token: 30fc3e2706ef7086e25974c3dd16c25e23641d7ecccb255c2e06332d40802ade9887254cf476220385169fcbdf863ea14957ad767270cc0a3e178826a2a61aea
+ crypted_password: c6225f507398eb6b868561a90b7f46da141acd4ae8824a52f1ecb13558cc6ba419d1d688579d78880c48059c1899a6cb0e1ede7e7dc58de8b9f2ec1396a72929
+ login_count: 0
+ failed_login_count: 0
+
+three:
+ id: 3
+ email: test@test.de
+ active: true
+ login: eintrager
+ name: Eintrager
+ password_salt: cnsfFDfEOq2m5xodoU8j
+ persistence_token: 487a91e636a81be53c880c1ccd36d94883498710b974516ab0ea5811e487fe9b7320593e522d1a209d2895194c5d8fa6b9ba859fa3602700d6b22e9d3d2b2aea
+ crypted_password: 838932616149b463848e11454a844a7ea0efa4dbe7c9606678741ae9a266c32b51369b7f5f02008e9a5ee3de6e81cc79cff068de3d0b6038691fa074558ddb80
+ login_count: 0
+ failed_login_count: 0
+
+
+#
+#two: {}
+#  column: value

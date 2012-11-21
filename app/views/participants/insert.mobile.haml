@@ -1,0 +1,10 @@
+%p
+  - unless @participant && !@inserted
+    = form_for :participant, :url => {:action => :insert}, :html => {:id => "tool-form"} do |f|
+      %div{'data-role' =>"fieldcontain"}
+        = f.label 'Start Nummer'
+        = f.text_field :uid, {:type => :number}
+        = f.submit :abschicken
+  - if @participant && !@inserted
+    = render :partial => "participant"
+    = render :partial => "insert_form"

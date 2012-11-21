@@ -1,0 +1,21 @@
+%p
+  Nachname:
+  %b= @participant.name
+%p
+  Vorname:
+  %b= @participant.given_name
+%p
+  Geschlecht:
+  %b= @participant.gender
+%p
+  Alter:
+  %b=@participant.age
+%p
+  Wohnort:
+  %b= @participant.location
+%p
+  Power Wertung?
+  %b= @participant.power ? "Ja" : "Nein"
+%p
+  Punkte:
+  %b= @participant.points

@@ -1,0 +1,79 @@
+%h4
+  Bouldernummer:
+  = @boulder.relax_number
+  = @boulder.relax_number
+
+%p
+  Begehungen:
+  = @boulder.count_relax_ascents
+  = @boulder.count_power_ascents
+
+%p
+  Erstbegangen von:
+  - ascents = @boulder.ascents.where(:state => ["flash", "top"]).sort_by{|a| a.created_at}
+  - if !ascents.empty?
+    = ascents.first.participant.name
+
+%p
+  Farbe:
+  = @boulder.color
+
+
+%div#chart-container-1.charts{:style =>"width: 50%; height: 400px;"}
+
+%div#chart-container-2.charts{:style =>"width: 100%; height: 400px;"}
+
+:javascript
+  chart1 = new Highcharts.Chart({
+    chart: {
+       renderTo: 'chart-container-1',
+       margin: [0,0,0,0]
+    },
+    title: {
+       text: 'Verhältnis Flashs/Tops'
+    },
+    tooltip: {
+      formatter: function () {
+        return this.y + ' '+ this.point.name;
+      }
+    },
+    series: [{
+       type: 'pie',
+       name: 'Verhältnis Flash/Tops',
+       data: [['Flashs', #{@flashs}], ['Tops', #{@tops}]]
+       }]
+  });
+  chart1 = new Highcharts.Chart({
+    chart: {
+       renderTo: 'chart-container-2',
+       defaultSeriesType: 'line'
+    },
+    title: {
+       text: 'Begehungen im November'
+    },
+    xAxis: {
+       title: {
+        text: 'Tag'
+       },
+       tickInterval: 1,
+       categories: #{@time_array.inspect},
+    },
+    yAxis: {
+       title: {
+          text: 'Anzahl'
+       },
+       min: 0
+    },
+    tooltip: {
+      formatter: function () {
+        return this.y + ' Begehungen';
+      }
+    },
+    series: [{
+       name: '#{@boulder.relax_number}',
+       data: #{@ascent_array.inspect}
+       }]
+  });
+
+
+

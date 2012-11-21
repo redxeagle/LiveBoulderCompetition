@@ -1,0 +1,17 @@
+- content_for :content do
+  %div#fixedbg
+  -#%div#left-ranking
+  -#  = image_tag "/images/sponsors/edelrid.jpg", :width => 130
+  -#  = image_tag "/images/sponsors/gutegriff.jpg", :width => 130
+  -#  = image_tag "/images/sponsors/lasportiva.jpg", :width => 130
+  -#  = image_tag "/images/sponsors/bergzeit.jpg", :width => 130
+  -#  = image_tag "/images/sponsors/rampaz.jpg", :width => 130
+  -#  = image_tag "/images/sponsors/geoquest_orange.jpg", :width => 130
+  -#  = image_tag "/images/sponsors/23holds.jpg", :width => 130
+  -#  = image_tag "/images/sponsors/logo-bleaustone.png", :width => 130
+  -#  - if current_user
+
+  %div#right-ranking
+    = yield
+
+= render :file => 'layouts/application'

@@ -1,0 +1,48 @@
+!!!DOCTYPE html
+%html
+  %head
+    %title OstBlockCup
+    = stylesheet_link_tag "style"
+    = stylesheet_link_tag :bootstrap
+    = javascript_include_tag :defaults
+    = javascript_include_tag :bootstrap
+
+    %meta{:'http-equiv' => 'Content-Type', :content => "text/html; charset=UTF-8"}
+
+    = yield(:head)
+    = csrf_meta_tag
+
+  %body
+    %div#header
+      %div#ostblocklogo
+      %div#login
+        - if current_user
+          %p
+            = link_to :ausloggen, user_session_path, :method => :delete
+        - else
+          %p
+            = link_to :einloggen, new_user_session_url
+      %div#logo
+        %div#menu
+          %li
+            -#- if current_user
+            = link_to :Boulder, boulders_path
+            = link_to :Eintragen, root_path
+            = link_to "Mobile Seite", root_path + "?mobile=true"
+            = link_to :Rangliste, ranking_path
+        %div#sponsors
+          = image_tag "/images/sponsors/tapir_Logo_url.jpg", :width => 130
+        -#  = image_tag "/images/sponsors/edelrid.jpg", :width => 130
+        -#  = image_tag "/images/sponsors/gutegriff.jpg", :width => 130
+        -#  = image_tag "/images/sponsors/lasportiva.jpg", :width => 130
+        -#  = image_tag "/images/sponsors/bergzeit.jpg", :width => 130
+        -#  = image_tag "/images/sponsors/rampaz.jpg", :width => 130
+        -#  = image_tag "/images/sponsors/geoquest_orange.jpg", :width => 130
+        -#  = image_tag "/images/sponsors/23holds.jpg", :width => 130
+        -#  = image_tag "/images/sponsors/logo-bleaustone.png", :width => 130
+
+    %div#container
+      %div#content
+        = content_for?(:content) ? yield(:content) : yield
+  :javascript
+    $('#sponsors').cycle('fade');

@@ -1,0 +1,11 @@
+- content_for :content do
+  %div#fixedbg
+  %div#left
+    - if current_user
+      %h2 Edit
+      %ul#leftmenu
+        %li= link_to :index, :participants
+  %div#right
+    = yield
+
+= render :file => 'layouts/application'

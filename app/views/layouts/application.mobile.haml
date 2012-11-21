@@ -1,0 +1,30 @@
+!!!DOCTYPE html
+%html
+  %head
+    %title OstBlockCup
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    = javascript_include_tag 'rails'
+    = javascript_include_tag :mobile
+    = stylesheet_link_tag "bouldermobile"
+    -#= stylesheet_link_tag :all
+    -#= javascript_include_tag :all
+
+
+    %meta{:'http-equiv' => 'Content-Type', :content => "text/html; charset=UTF-8"}
+
+    = yield(:head)
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    = csrf_meta_tag
+
+  %body
+    %div{'data-role' =>"page"}
+      %div{'data-role' =>"header"}
+        %div{'data-role' =>"controlgroup"}
+          = link_to :Eintragen, root_path, {'data-role' => 'button', 'rel'=>"external"}
+          = link_to "Normale Ansicht", root_path + "?mobile=false", {'data-role' => 'button', 'rel'=>"external"}
+      %div{'data-role' =>"content"}
+        %div#container
+          %div#content
+            = content_for?(:content) ? yield(:content) : yield
+      %div{"data-role"=> "footer"}
+        = image_tag "/images/sponsors/tapir_Logo_url.jpg", :width => 130

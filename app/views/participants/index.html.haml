@@ -1,0 +1,7 @@
+- @participants.each do |participant|
+  %p
+    = link_to participant.uid, edit_participant_path(participant)
+    = participant.label
+
+
+
