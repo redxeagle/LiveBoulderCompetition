@@ -1,0 +1,121 @@
+body {
+    padding: 55px;
+}
+
+
+#left { clear: left; float: left; width: 340px; padding: 0 34px 0 0px; font-size: .9em; margin: 0 0 15px; z-index: 3; position:relative;}
+    #left h2 {
+        border: 1px solid #bbb;
+        background: url(/images/boulder/button.png) no-repeat 0px 1px ;
+        text-align: center;
+        -moz-border-radius:3px;
+        -khtml-border-radius:3px;
+        height: 24px;
+        padding: 4px 0 4px 0;
+        margin-bottom: 20px;
+}
+	#leftmenu { list-style: none; margin: 0 0 20px 0; }
+	#leftmenu li {
+        padding: 2px 0 2px 40px;
+        margin: 8px 0 0;
+        background: #eee url(/images/boulder/arrow.png) no-repeat 10px center;
+        color: #46852F;
+        border: 1px solid #bbb;
+        -moz-border-radius:3px;
+        -khtml-border-radius:3px;
+    }
+    #leftmenu li:hover { background: #eee url(/images/boulder/arrow_over.png) no-repeat 10px center; }
+
+	#leftmenu li a { background: #eee; color: #4D4D53; }
+
+    #leftmenu li a:hover {color: #ee9a69;}
+
+
+	#left a, #right a { background: #EFFCFF; color: #317486; }
+
+	#left h3 { border-bottom: 1px solid #eee; padding: 0 0 7px; margin: 0 0 15px 0; }
+
+.fieldset {
+    -moz-border-radius:10px;
+    -khtml-border-radius:10px;
+    width: 300px;
+    min-height: 250px;
+    padding: 20px 0 15px 40px;
+    background: url(/images/boulder/login.png) no-repeat;
+    background-color: #fff;
+}
+
+.fieldset_female {
+    -moz-border-radius:10px;
+    -khtml-border-radius:10px;
+    width: 300px;
+    min-height: 250px;
+    padding: 20px 0 15px 40px;
+    background: url(/images/boulder/login-red.png) no-repeat;
+    background-color: #fff;
+}
+
+/* tables */
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(/images/boulder/table-bg.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(/images/boulder/asc-table.png);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(/images/boulder/desc-table.png);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+
+.zone {
+background-color: #ffff00;
+    border: dashed 1px;
+}
+
+.top {
+background-color: #ccffcc;
+    border: dashed 1px;
+}
+
+.flash {
+background-color: #00cc33;
+    border: dashed 1px;
+}
+
+.nichts {
+background-color: #ff0000;
+    border: dashed 1px;
+}
+
+#loading
+{
+    display: none;
+}

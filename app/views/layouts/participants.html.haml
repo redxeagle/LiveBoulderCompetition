@@ -1,11 +1,20 @@
 - content_for :content do
-  %div#fixedbg
-  %div#left
-    - if current_user
-      %h2 Edit
+  %div.row
+    %div.span6#left
       %ul#leftmenu
-        %li= link_to :index, :participants
-  %div#right
-    = yield
+        - if current_user
+          %h2 Edit
+          %ul#leftmenu
+            %li= link_to :index, :participants
+    %div.span6
+      = yield
+  -#%div#fixedbg
+  -#%div#left
+  -#  - if current_user
+  -#    %h2 Edit
+  -#    %ul#leftmenu
+  -#      %li= link_to :index, :participants
+  -#%div#right
+  -#  = yield
 
 = render :file => 'layouts/application'

@@ -35,9 +35,9 @@ module Bws
     config.action_view.javascript_expansions[:defaults] = %w(jquery-1.4.2.min rails jquery-ui-1.8.5.custom.min jquery.tablesorter.min jquery.scrollabletab highcharts jquery.cycle.min)
 
     config.action_view.javascript_expansions[:mobile] = %w(jquery-1.6.4.min jquery.mobile-1.0.1.min)
-    config.action_view.javascript_expansions[:mobile] = %w(jquery-1.6.4.min jquery.mobile-1.0.1.min)
-    config.action_view.javascript_expansions[:bootstrap] = %w(jquery-1.6.4.min jquery.mobile-1.0.1.min)
-    config.action_view.stylesheet_expansions[:bootstrap] = %w(bootstrap.min bootstrap-responsive.min)
+    config.action_view.javascript_expansions[:bootstrap] = %w(bootstrap)
+    config.action_view.stylesheet_expansions[:bootstrap] = %w(bootstrap.min)
+    config.action_view.stylesheet_expansions[:defaults] = %w(custom jquery-ui-1.7.3.custom)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
