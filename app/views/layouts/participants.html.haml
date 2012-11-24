@@ -1,4 +1,10 @@
 - content_for :content do
+  %div.hero-unit
+    = form_for :participant, :url => {:action => :insert}, :html => {:id => "tool-form"}, :remote => true do |f|
+      = f.text_field :uid
+      = f.submit :abschicken
+      %span#loading
+        = image_tag("loading.gif", :size => "16x16" )
   %div.row
     %div.span6#left
       %ul#leftmenu
