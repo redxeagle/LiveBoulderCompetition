@@ -16,33 +16,33 @@
       = "Wird wieder aktualisiert in: #{120 -(Time.now - @cache_time).to_i} Sekunden"
     %div#tabs-1
       %p
-        %table#table-relax.tablesorter
+        %table.table-striped.table-hover#table-relax.tablesorter
           = render :partial => 'participants', :locals => {:participants => @participants_relax}
         %span#tab1
 
     %div#tabs-2
       %p
-        %table#table-power.tablesorter
+        %table.table-striped.table-hover#table-power.tablesorter
           = render :partial => 'participants', :locals => {:participants => @participants_power}
         %span#tab2
     %div#tabs-3
       %p
-        %table#table-leipzig.tablesorter
+        %table.table-striped.table-hover#table-leipzig.tablesorter
           = render :partial => 'participants', :locals => {:participants => @participants_leipzig}
         %span#tab3
     %div#tabs-4
       %p
-        %table#table-seniors.tablesorter
+        %table.table-striped.table-hover#table-seniors.tablesorter
           = render :partial => 'participants', :locals => {:participants => @participants_seniors}
         %span#tab4
     %div#tabs-5
       %p
-        %table#table-all.tablesorter
+        %table.table-striped.table-hover#table-all.tablesorter
           = render :partial => 'participants', :locals => {:participants => @participants_kinder}
         %span#tab5
     %div#tabs-6
       %p
-        %table#table-achtzehn.tablesorter
+        %table.table-striped.table-hover#table-achtzehn.tablesorter
           = render :partial => 'participants', :locals => {:participants => @participants_u_18}
         %span#tab6
 

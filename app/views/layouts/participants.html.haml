@@ -2,7 +2,7 @@
   %div.hero-unit
     = form_for :participant, :url => {:action => :insert}, :html => {:id => "tool-form"}, :remote => true do |f|
       = f.text_field :uid
-      = f.submit :abschicken
+      = f.submit :abschicken, {:class => :btn}
       %span#loading
         = image_tag("loading.gif", :size => "16x16" )
   %div.row

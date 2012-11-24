@@ -35,6 +35,10 @@ body {
 
 	#left h3 { border-bottom: 1px solid #eee; padding: 0 0 7px; margin: 0 0 15px 0; }
 
+#participant_submit
+{
+    margin-top: -10px;
+}
 .fieldset {
     -moz-border-radius:10px;
     -khtml-border-radius:10px;
