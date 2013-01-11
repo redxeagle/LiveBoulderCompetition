@@ -38,23 +38,23 @@ class BouldersController < ApplicationController
       @participants_relax  = Rails.cache.fetch('participants_relax', :expires_in => cache_duration) do
           Participant.relax.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
       end
-      @participants_power  = Rails.cache.fetch('participants_power', :expires_in => cache_duration) do
-        Participant.power.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      @participants_men  = Rails.cache.fetch('participants_power', :expires_in => cache_duration) do
+        Participant.men.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
       end
-      @participants_leipzig  = Rails.cache.fetch('participants_leipzig', :expires_in => cache_duration) do
-        Participant.leipziger.map{|e| [e.label, e.count_ascents, e.location,
+      @participants_women  = Rails.cache.fetch('participants_leipzig', :expires_in => cache_duration) do
+        Participant.woman.map{|e| [e.label, e.count_ascents, e.location,
                                      e.points]}.sort_by{|u| u[3]}.reverse
       end
-      @participants_kinder  = Rails.cache.fetch('participants_kinder', :expires_in => cache_duration) do
-        Participant.kinder.map{|e| [e.label, e.count_ascents, e.location,
+      @participants_A  = Rails.cache.fetch('participants_kidsA', :expires_in => cache_duration) do
+        Participant.kidsA.map{|e| [e.label, e.count_ascents, e.location,
                                      e.points]}.sort_by{|u| u[3]}.reverse
       end
-      @participants_seniors  = Rails.cache.fetch('participants_senior', :expires_in => cache_duration) do
-        Participant.senior.map{|e| [e.label, e.count_ascents, e.location,
+      @participants_B  = Rails.cache.fetch('participants_kidsB', :expires_in => cache_duration) do
+        Participant.kidsB.map{|e| [e.label, e.count_ascents, e.location,
                                      e.points]}.sort_by{|u| u[3]}.reverse
       end
-      @participants_u_18  = Rails.cache.fetch('participants_u_18', :expires_in => cache_duration) do
-        Participant.u_achtzehn.map{|e| [e.label, e.count_ascents, e.location,
+      @participants_C  = Rails.cache.fetch('participants_kidsC', :expires_in => cache_duration) do
+        Participant.kidsC.map{|e| [e.label, e.count_ascents, e.location,
                                      e.points]}.sort_by{|u| u[3]}.reverse
       end
     else

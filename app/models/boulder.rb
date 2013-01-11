@@ -5,15 +5,19 @@ class Boulder < ActiveRecord::Base
   has_many :participants, :through => :ascents
 
   scope :power, where(:color => ['dunkel-grün', 'rot', 'grau'])
-  scope :relax, where(:color => ['gelb', 'hell-grün', 'dunkel-grün', 'blau'])
+  scope :relax, where(:color => ['blau und orange', 'weiß und gelb', 'grün', 'grau', 'rot'])
   scope :yellow, where(:color => 'gelb')
   scope :blue, where(:color => 'blau')
   scope :green, where(:color => 'grün')
   scope :lightgreen, where(:color => 'hell-grün')
+  scope :orange, where(:color => 'orange')
+  scope :white, where(:color => 'weiß')
   scope :darkgreen, where(:color => 'dunkel-grün')
   scope :meliert, where(:color => 'meliert')
   scope :red, where(:color => 'rot')
   scope :grey, where(:color => 'grau')
+  scope :whiteyellow, where(:color => 'weiß und gelb')
+  scope :blueorange, where(:color => 'blau und orange')
 
 
   def which_ascent(participant)

@@ -2,7 +2,7 @@
 %html
   %head
     %title OstBlockCup
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    = stylesheet_link_tag "jquery.mobile-1.0.1.min.css"
     = javascript_include_tag 'rails'
     = javascript_include_tag :mobile
     = stylesheet_link_tag "bouldermobile"
@@ -26,5 +26,5 @@
         %div#container
           %div#content
             = content_for?(:content) ? yield(:content) : yield
-      %div{"data-role"=> "footer"}
+      -#%div{"data-role"=> "footer"}
         = image_tag "/images/sponsors/tapir_Logo_url.jpg", :width => 130

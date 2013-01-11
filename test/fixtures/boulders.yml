@@ -7,210 +7,152 @@
 #
 one:
  id: 1
- color: gelb
+ color: blau und orange
  relax_number: 1
 #
 two:
  id: 2
- color: gelb
+ color: grün
  relax_number: 2
 
 three:
  id: 3q
- color: gelb
+ color: grün
  relax_number: 3
 
 four:
  id: 4
- color: gelb
+ color: grün
  relax_number: 4
 
 five:
  id: 5
- color: gelb
+ color: grün
  relax_number: 5
 
 six:
  id: 6
- color: blau
+ color: blau und orange
  relax_number: 6
 
 seven:
  id: 7
- color: blau
+ color: rot
  relax_number: 7
 eight:
  id: 8
- color: blau
+ color: weiß und gelb
  relax_number: 8
 
 oneb:
  id: 9
- color: blau
+ color: grau
  relax_number: 9
 #
 twob:
  id: 10
- color: blau
+ color: rot
  relax_number: 10
 
 threeb:
  id: 11
- color: blau
+ color: weiß und gelb
  relax_number: 11
 
 fourb:
  id: 12
- color: blau
+ color: grau
  relax_number: 12
 
 fiveb:
  id: 13
- color: blau
+ color: rot
  relax_number: 13
 
 sixb:
  id: 14
- color: hell-grün
+ color: grau
  relax_number: 14
 
 sevenb:
  id: 15
- color: hell-grün
+ color: blau und orange
  relax_number: 15
 
 eightb:
  id: 16
- color: hell-grün
+ color: weiß und gelb
  relax_number: 16
 
 #gruen
 onegr:
  id: 17
- color: hell-grün
+ color: rot
  relax_number: 17
 #
 twogr:
  id: 18
- color: hell-grün
+ color: rot
  relax_number: 18
 
 
 threegr:
  id: 19
- color: dunkel-grün
+ color: grau
  relax_number: 19
- power_number: 1
+
 
 fourgr:
  id: 20
- color: dunkel-grün
+ color: grün
  relax_number: 20
- power_number: 2
 
 nine:
  id: 21
- color: dunkel-grün
+ color: grau
  relax_number: 21
- power_number: 3
 
 ten:
  id: 22
- color: dunkel-grün
+ color: rot
  relax_number: 22
- power_number: 4
 
 eleven:
  id: 23
- color: dunkel-grün
+ color: weiß und gelb
  relax_number: 23
- power_number: 5
 
 twelve:
  id: 24
  color: rot
- power_number: 6
+ relax_number: 24
+
 nineb:
  id: 25
- color: rot
- power_number: 7
+ color: grau
+ relax_number: 25
 
 tenb:
  id: 26
- color: rot
- power_number: 8
+ color: grün
+ relax_number: 26
 
 elevenb:
  id: 27
  color: rot
- power_number: 9
+ relax_number: 27
 
 twelveb:
  id: 28
- color: rot
- power_number: 10
+ color: grün
+ relax_number: 28
 
 ninegr:
  id: 29
- color: rot
- power_number: 11
+ color: blau und orange
+ relax_number: 29
 
 tengr:
  id: 30
- color: rot
- power_number: 12
-
-elevengr:
- id: 31
- color: rot
- power_number: 13
-
-twelvegr:
- id: 32
  color: grau
- power_number: 14
-
-ninegr:
- id: 33
- color: grau
- power_number: 15
-
-tengrb:
- id: 34
- color: grau
- power_number: 16
-
-elevengrb:
- id: 35
- color: grau
- power_number: 17
-
-twelvegrb:
- id: 36
- color: grau
- power_number: 18
-
-thiertheeenn:
- id: 37
- color: grau
- power_number: 19
-
-thirtheeneight:
-  id: 38
-  color: grau
-  power_number: 20
-
-thiertheennine:
-  id: 39
-  color: grau
-  power_number: 21
-
-fourtheen:
-  id: 40
-  color: grau
-  power_number: 22
-
-fourtheenone:
-  id: 41
-  color: grau
-  power_number: 23
+ relax_number: 30

@@ -25,6 +25,12 @@
                 =link_to "Mobile Seite", root_path + "?mobile=true"
               %li
                 =link_to :Rangliste, ranking_path
+              %li
+                - if current_user
+                  = link_to :ausloggen, user_session_path, :method => :delete
+                - else
+                  = link_to :Admin, new_user_session_url
+
     %div.container
       = content_for?(:content) ? yield(:content) : yield
     -#%div#header

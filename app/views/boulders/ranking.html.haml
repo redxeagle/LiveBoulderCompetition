@@ -1,13 +1,13 @@
 %p
   %div#tabs
     %ul
-      %li= link_to  "Relax", "#tabs-1"
-      %li= link_to  "Power", "#tabs-2"
-      %li= link_to  "Leipziger", "#tabs-3"
-      %li= link_to  "Senioren", "#tabs-4"
-      %li= link_to  "Kinder", "#tabs-5"
-      %li= link_to  "U 18", "#tabs-6"
-    - if current_user
+      %li= link_to  "alle", "#tabs-1"
+      %li= link_to  "Männer", "#tabs-2"
+      %li= link_to  "Frauen", "#tabs-3"
+      -#%li= link_to  "Jugend A", "#tabs-2"
+      -#%li= link_to  "Jugend B", "#tabs-3"
+      -#%li= link_to  "Jugend C", "#tabs-4"
+    -#- if current_user
       = form_for :filter, :url => :ranking, :remote => true do |f|
         = f.select :Wertung, [["alle", 1], ["Männer", 2], ["Frauen", 3], ["Kinder (0-12)", 4], ["U18 (13-17) m", 5], ["U18 (13-17) w", 6]]
         = f.submit :filter
@@ -23,28 +23,28 @@
     %div#tabs-2
       %p
         %table.table-striped.table-hover#table-power.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_power}
+          = render :partial => 'participants', :locals => {:participants => @participants_men}
         %span#tab2
     %div#tabs-3
       %p
         %table.table-striped.table-hover#table-leipzig.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_leipzig}
+          = render :partial => 'participants', :locals => {:participants => @participants_women}
         %span#tab3
-    %div#tabs-4
+    -#%div#tabs-2
       %p
         %table.table-striped.table-hover#table-seniors.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_seniors}
-        %span#tab4
-    %div#tabs-5
+          = render :partial => 'participants', :locals => {:participants => @participants_A}
+        %span#tab2
+    -#%div#tabs-3
       %p
         %table.table-striped.table-hover#table-all.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_kinder}
-        %span#tab5
-    %div#tabs-6
+          = render :partial => 'participants', :locals => {:participants => @participants_B}
+        %span#tab3
+    -#%div#tabs-4
       %p
         %table.table-striped.table-hover#table-achtzehn.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_u_18}
-        %span#tab6
+          = render :partial => 'participants', :locals => {:participants => @participants_C}
+        %span#tab4
 
 :javascript
   $(document).ready(function() {
