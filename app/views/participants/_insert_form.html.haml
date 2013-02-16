@@ -1,5 +1,5 @@
 %div#tabs
-  - form_for :participant do |form|
+  = form_for :participant do |form|
     %ul
       - if !@participant.power
         %li= link_to  "weiß/gelb", "#tabs-1"

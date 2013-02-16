@@ -34,11 +34,9 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     builder (3.0.4)
-    dynamic_form (1.1.4)
     erubis (2.7.0)
     fastercsv (1.5.5)
-    haml (4.0.0)
-      tilt
+    haml (3.1.7)
     hike (1.2.1)
     i18n (0.6.1)
     json (1.7.7)
@@ -96,7 +94,6 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic
-  dynamic_form
   fastercsv
   haml
   mobile_fu-rails3

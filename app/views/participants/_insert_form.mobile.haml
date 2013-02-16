@@ -1,5 +1,5 @@
 %div{"data-role" => "collapsible-set"}
-  - form_for :participant do |form|
+  = form_for :participant do |form|
     - if !@participant.power
       %div{"data-role" => "collapsible"}
         %h3= "Weiß/Gelb"

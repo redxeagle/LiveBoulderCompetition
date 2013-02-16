@@ -1,6 +1,5 @@
 %div#middle.fieldset
-  - form_for @user_session, :url => user_session_path do |f|
-    = f.error_messages
+  = form_for @user_session, :url => user_session_path do |f|
     %p
       = f.label :Benutzername
     %p
