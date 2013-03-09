@@ -13,15 +13,10 @@
           %ul#leftmenu
             %li= link_to :index, :participants
             %li= link_to "CSV Upload", participants_upload_path
+            %li= link_to "clear all", participants_clear_path,
+                                      :method => :delete,
+                                      :confirm => "Wirklich alle Begehungen und Benutzer löschen?"
     %div.span6#right
       = yield
-  -#%div#fixedbg
-  -#%div#left
-  -#  - if current_user
-  -#    %h2 Edit
-  -#    %ul#leftmenu
-  -#      %li= link_to :index, :participants
-  -#%div#right
-  -#  = yield
 
 = render :file => 'layouts/application'
