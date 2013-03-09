@@ -8,6 +8,8 @@ Bws::Application.routes.draw do
   resource :user_session
   resource :account, :controller => "users"
 
+  match 'participants/upload' => 'participants#upload', :as => 'participants_upload'
+
   resources :participants do
     get :insert
     post :insert

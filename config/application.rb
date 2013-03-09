@@ -33,6 +33,7 @@ module Bws
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
     config.action_view.javascript_expansions[:defaults] = %w(jquery-1.4.2.min rails jquery-ui-1.8.5.custom.min jquery.tablesorter.min jquery.scrollabletab highcharts jquery.cycle.min)
+    config.action_view.javascript_expansions[:file_upload] = %w(jquery.fileupload)
 
     config.action_view.javascript_expansions[:mobile] = %w(jquery-1.6.4.min jquery.mobile-1.0.1.min)
     config.action_view.javascript_expansions[:bootstrap] = %w(bootstrap)
