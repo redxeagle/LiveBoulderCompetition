@@ -34,23 +34,26 @@ class ParticipantsController < ApplicationController
       file = params[:file_upload][:file]
       last_participant = Participant.last
       last_uid = last_participant.nil? ? 1001 : last_participant.uid
-      FasterCSV.parse(file.tempfile).each do |row|
-        last_uid += 15
-        participant = Participant.new
-        participant.uid = last_uid
-        participant.web_participants_id = row[0]
-        participant.name = row[1]
-        participant.given_name = row[2]
-        participant.location = row[3]
-        participant.gender= row[4]
-        participant.age= row[5]
-        participant.power = row[6]
-        participant.save
-        if(participant.errors.any?)
-          puts row[0] + row[1] + row[2] + row[3] + row[4] + row[5] + row[6]
-          puts participant.errors.messages
+      Participant.transaction do
+        FasterCSV.parse(file.tempfile).each do |row|
+          last_uid += 15
+          participant = Participant.new
+          participant.uid = last_uid
+          participant.web_participants_id = row[0]
+          participant.name = row[1]
+          participant.given_name = row[2]
+          participant.location = row[3]
+          participant.gender= row[4]
+          participant.age= row[5]
+          participant.power = row[6]
+          participant.save
+          if(participant.errors.any?)
+            puts row[0] + row[1] + row[2] + row[3] + row[4] + row[5] + row[6]
+            puts participant.errors.messages
+          end
         end
       end
+      redirect_to root_path
     end
   end
 

@@ -9,7 +9,7 @@ Bws::Application.routes.draw do
   resource :account, :controller => "users"
 
   match 'participants/upload' => 'participants#upload', :as => 'participants_upload'
-  match 'participants/clear' => 'participants#clear', :as => 'participants_clear', :method => :delete
+  match 'participants/clear' => 'participants#clear', :as => 'participants_clear', :via => :delete
 
   resources :participants do
     get :insert
