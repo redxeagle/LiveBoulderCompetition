@@ -1,0 +1,3 @@
+= form_for :file_upload, :html => { :multipart => true }, :url => participants_upload_path do |form|
+  = form.file_field :file
+  = form.submit

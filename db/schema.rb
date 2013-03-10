@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309091215) do
+ActiveRecord::Schema.define(:version => 20130310124022) do
 
   create_table "ascents", :force => true do |t|
     t.integer  "boulder_id"
@@ -31,17 +31,6 @@ ActiveRecord::Schema.define(:version => 20130309091215) do
     t.string   "relax_number"
   end
 
-  create_table "configs", :force => true do |t|
-    t.string   "ranking_city"
-    t.string   "ranking_tabs"
-    t.string   "colors"
-    t.string   "relax_colors"
-    t.string   "power_colors"
-    t.boolean  "power"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "participants", :force => true do |t|
     t.integer  "uid"
     t.string   "name"
@@ -56,6 +45,17 @@ ActiveRecord::Schema.define(:version => 20130309091215) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "web_participants_id"
+  end
+
+  create_table "settings", :force => true do |t|
+    t.string   "ranking_city"
+    t.string   "ranking_tabs"
+    t.string   "colors"
+    t.string   "relax_colors"
+    t.string   "power_colors"
+    t.boolean  "power"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

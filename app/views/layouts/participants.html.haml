@@ -16,6 +16,7 @@
             %li= link_to "clear all", participants_clear_path,
                                       :method => :delete,
                                       :confirm => "Wirklich alle Begehungen und Benutzer löschen?"
+            %li= link_to "Setting", settings_path
     %div.span6#right
       = yield
 

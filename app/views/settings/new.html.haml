@@ -1,0 +1,22 @@
+= form_for @setting do |f|
+  - if @setting.errors.any?
+    %div#error_explanation
+      %h2
+        = pluralize(@setting.errors.count, "error")
+        prohibited
+      %ul
+        - @setting.errors.full_messages.each do |msg|
+          %li= msg
+  = f.label :ranking_city
+  = f.text_field :ranking_city
+  = f.label :ranking_tabs
+  = f.text_field :ranking_tabs
+  = f.label :colors
+  = f.text_field :colors
+  = f.label :relax_colors
+  = f.text_field :relax_colors
+  = f.label :power_colors
+  = f.text_field :power_colors
+  = f.label :power
+  = f.check_box :power
+  = f.submit "Anlegen"
