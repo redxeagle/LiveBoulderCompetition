@@ -5,6 +5,19 @@ class SettingsController < ApplicationController
   def new
     @setting = Setting.new
   end
+  def edit
+    @setting = Setting.all.first
+  end
+
+  def update
+    @setting= Setting.all.first
+    if @setting.update_attributes(params[:setting])
+      flash[:notice] = "Einstellungen updated!"
+      redirect_to root_path
+    else
+      render :action => :edit
+    end
+  end
   def create
     @setting = Setting.new(params[:setting])
         if @setting.save
