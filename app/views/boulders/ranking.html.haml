@@ -1,50 +1,20 @@
 %p
   %div#tabs
     %ul
-      %li= link_to  "alle", "#tabs-1"
-      %li= link_to  "Männer", "#tabs-2"
-      %li= link_to  "Frauen", "#tabs-3"
-      -#%li= link_to  "Jugend A", "#tabs-2"
-      -#%li= link_to  "Jugend B", "#tabs-3"
-      -#%li= link_to  "Jugend C", "#tabs-4"
-    -#- if current_user
-      = form_for :filter, :url => :ranking, :remote => true do |f|
-        = f.select :Wertung, [["alle", 1], ["Männer", 2], ["Frauen", 3], ["Kinder (0-12)", 4], ["U18 (13-17) m", 5], ["U18 (13-17) w", 6]]
-        = f.submit :filter
-      = link_to "Beamer Modus", :beamer_modus => true
+      - counter = 1
+      - @participants_hash.each do |key, participants|
+        %li= link_to key, "#tabs-" + counter.to_s
+        - counter += 1
     %p
       = "Wird wieder aktualisiert in: #{120 -(Time.now - @cache_time).to_i} Sekunden"
-    %div#tabs-1
-      %p
-        %table.table-striped.table-hover#table-relax.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_relax}
-        %span#tab1
 
-    %div#tabs-2
-      %p
-        %table.table-striped.table-hover#table-power.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_men}
-        %span#tab2
-    %div#tabs-3
-      %p
-        %table.table-striped.table-hover#table-leipzig.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_women}
-        %span#tab3
-    -#%div#tabs-2
-      %p
-        %table.table-striped.table-hover#table-seniors.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_A}
-        %span#tab2
-    -#%div#tabs-3
-      %p
-        %table.table-striped.table-hover#table-all.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_B}
-        %span#tab3
-    -#%div#tabs-4
-      %p
-        %table.table-striped.table-hover#table-achtzehn.tablesorter
-          = render :partial => 'participants', :locals => {:participants => @participants_C}
-        %span#tab4
+    - counter = 1
+    - @participants_hash.each do |key, participants|
+      %div{:id => "tabs-" + counter.to_s}
+        %table.table-striped.table-hove.tablesorter{:id => key}
+          = render :partial => 'participants', :locals => {:participants => participants}
+        %span{:id => "tab#{counter.to_s}"}
+      - counter = counter + 1
 
 :javascript
   $(document).ready(function() {
@@ -53,8 +23,7 @@
     if (params["beamer_modus"] == "true") {
       start_beamer_modus();
     }
+    #{some_helper_function(@participants_hash)}
+
+
   });
--#= f.select :Wertung, [["alle", 1], ["Männer", 2], ["Frauen", 3], ["Senioren 1 (40-50)" , 9],
--#                    ["Senioren 2 (51-60)" , 10], ["Senioren 3 (61+)" , 11],
--#                    ["Studenten", 4], ["Jugend (16-18)", 5], ["Jugend (14-15)", 6],
--#                    ["Jugend (10-13)", 7], ["Kinder (0-9)", 8]]

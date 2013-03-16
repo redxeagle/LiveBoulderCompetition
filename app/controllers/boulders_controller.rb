@@ -30,40 +30,51 @@ class BouldersController < ApplicationController
 
   def ranking
     cache_duration = 120
-      @cache_time = Rails.cache.fetch('time', :expires_in => cache_duration) { Time.now }
-    unless params[:filter]
-      @participants = Rails.cache.fetch('participants', :expires_in => cache_duration) {
-         Participant.all.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
-      }
-      @participants_relax  = Rails.cache.fetch('participants_relax', :expires_in => cache_duration) do
-          Participant.relax.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+    @cache_time = Rails.cache.fetch('time', :expires_in => cache_duration) { Time.now }
+    @settings = Setting.all.first
+    @participants_hash = {}
+
+    @participants_hash[:all] = Rails.cache.fetch('participants', :expires_in => cache_duration) {
+               Participant.all.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+    }
+
+    @participants_hash[:relax] = Rails.cache.fetch('participants_relax', :expires_in => cache_duration) do
+            Participant.relax.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+    end
+
+    @participants_hash[:relax_men] =  Rails.cache.fetch('participants_relax_men', :expires_in => cache_duration) do
+              Participant.men_relax.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+    end
+
+    @participants_hash[:relax_women] =  Rails.cache.fetch('participants_relax_woman', :expires_in => cache_duration) do
+          Participant.woman_relax.map{|e| [e.label, e.count_ascents, e.location,
+                                       e.points]}.sort_by{|u| u[3]}.reverse
+    end
+
+    if(@settings.power?)
+      @participants_hash[:power] = Rails.cache.fetch('participants_power', :expires_in => cache_duration) do
+                  Participant.power.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
       end
-      @participants_men  = Rails.cache.fetch('participants_power', :expires_in => cache_duration) do
-        Participant.men.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      @participants_hash[:power_men] = Rails.cache.fetch('participants_power_men', :expires_in => cache_duration) do
+                  Participant.men_power.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
       end
-      @participants_women  = Rails.cache.fetch('participants_leipzig', :expires_in => cache_duration) do
-        Participant.woman.map{|e| [e.label, e.count_ascents, e.location,
-                                     e.points]}.sort_by{|u| u[3]}.reverse
+      @participants_hash[:power_women] = Rails.cache.fetch('participants_power_women', :expires_in => cache_duration) do
+                  Participant.woman_power.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
       end
-      @participants_A  = Rails.cache.fetch('participants_kidsA', :expires_in => cache_duration) do
-        Participant.kidsA.map{|e| [e.label, e.count_ascents, e.location,
-                                     e.points]}.sort_by{|u| u[3]}.reverse
-      end
-      @participants_B  = Rails.cache.fetch('participants_kidsB', :expires_in => cache_duration) do
-        Participant.kidsB.map{|e| [e.label, e.count_ascents, e.location,
-                                     e.points]}.sort_by{|u| u[3]}.reverse
-      end
-      @participants_C  = Rails.cache.fetch('participants_kidsC', :expires_in => cache_duration) do
-        Participant.kidsC.map{|e| [e.label, e.count_ascents, e.location,
-                                     e.points]}.sort_by{|u| u[3]}.reverse
-      end
-    else
-      @participants_relax = filter_relax(params[:filter])
-      @participants_power = filter_power(params[:filter])
-      @participants_leipzig = filter_berlin(params[:filter])
-      @participants_kinder = filter(params[:filter])
-      @participants_leipzig = filter_berlin(params[:filter])
-      @participants_u_18 = Participant.u_achtzehn
+    end
+
+
+    @participants_A  = Rails.cache.fetch('participants_kidsA', :expires_in => cache_duration) do
+      Participant.kidsA.map{|e| [e.label, e.count_ascents, e.location,
+                                   e.points]}.sort_by{|u| u[3]}.reverse
+    end
+    @participants_B  = Rails.cache.fetch('participants_kidsB', :expires_in => cache_duration) do
+      Participant.kidsB.map{|e| [e.label, e.count_ascents, e.location,
+                                   e.points]}.sort_by{|u| u[3]}.reverse
+    end
+    @participants_C  = Rails.cache.fetch('participants_kidsC', :expires_in => cache_duration) do
+      Participant.kidsC.map{|e| [e.label, e.count_ascents, e.location,
+                                   e.points]}.sort_by{|u| u[3]}.reverse
     end
   end
 
