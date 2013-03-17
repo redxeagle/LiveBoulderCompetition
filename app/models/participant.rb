@@ -12,13 +12,16 @@ class Participant < ActiveRecord::Base
   scope :berliner, where(:location => "Berlin", :power => true)
   scope :u_achtzehn, where(["age < 18 AND age > 12 "]).where(:power => true)
   scope :senior, where(["age > 39 "]).where(:power => true)
+  scope :city, where(:location => Setting.all.first.ranking_city)
   scope :woman_relax, where(:power => false, :gender => 'weiblich')
   scope :men_relax, where(:power => true, :gender => 'männlich')
   scope :woman_power, where(:power => true, :gender => 'weiblich')
   scope :men_power, where(:power => true, :gender => 'männlich')
   scope :kidsA, where(["age < 18 AND age > 15 "]).where(:power => false) # 16 -17
   scope :kidsB, where(["age < 16 AND age > 13 "]).where(:power => false) # 14 -15
-  scope :kidsC, where(["age < 14"]).where(:power => false) # 0 - 13
+  scope :kidsC, where(["age < 14 AND age > 11"]).where(:power => false) # 12 - 13
+  scope :kidsE, where(["age < 12"]).where(:power => false) # 0 - 12
+  scope :senior, where(["age > 39"]).where(:power => false) # 40+
 
   before_destroy :validation_for_names
 

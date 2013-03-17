@@ -63,6 +63,28 @@ class BouldersController < ApplicationController
       end
     end
 
+    unless(@settings.ranking_city.empty?)
+      @participants_hash[:city] = Rails.cache.fetch('participants_city', :expires_in => cache_duration) do
+                        Participant.city.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
+    ranking_tabs = @settings.ranking_tabs.split(',')
+    if(ranking_tabs.include?("senior"))
+      @participants_hash[:senior] = Rails.cache.fetch('participants_senior', :expires_in => cache_duration) do
+        Participant.senior.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
+    if(ranking_tabs.include?("kidsE"))
+      @participants_hash[:kidsE] = Rails.cache.fetch('participants_kidsE', :expires_in => cache_duration) do
+        Participant.kidsE.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
+    if(ranking_tabs.include?("u_achtzehn"))
+      @participants_hash[:u_achtzehn] = Rails.cache.fetch('participants_u_achtzehn', :expires_in => cache_duration) do
+        Participant.u_achtzehn.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
+
 
     @participants_A  = Rails.cache.fetch('participants_kidsA', :expires_in => cache_duration) do
       Participant.kidsA.map{|e| [e.label, e.count_ascents, e.location,

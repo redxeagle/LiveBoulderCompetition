@@ -3,7 +3,7 @@
     %ul
       - counter = 1
       - @participants_hash.each do |key, participants|
-        %li= link_to key, "#tabs-" + counter.to_s
+        %li= link_to t(key), "#tabs-" + counter.to_s
         - counter += 1
     %p
       = "Wird wieder aktualisiert in: #{120 -(Time.now - @cache_time).to_i} Sekunden"
