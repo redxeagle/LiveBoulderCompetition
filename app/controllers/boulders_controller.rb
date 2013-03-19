@@ -100,6 +100,29 @@ class BouldersController < ApplicationController
     end
   end
 
+  def mass_edit
+    @boulders = Boulder.all.sort_by{|e| e.id}
+    @colors = Setting.all.first.colors.split(", ")
+    @colors.insert(0, "Bitte Farbe wählen")
+  end
+
+  def mass_update
+    boulders = params[:boulders][:boulder_attributes]
+
+    boulders.each do |key, value|
+      boulder = Boulder.find_by_id(key)
+      boulder.update_attributes(value)
+    end
+
+
+
+    redirect_to root_path
+  end
+
+  def update
+
+  end
+
   def show_participant
 
   end

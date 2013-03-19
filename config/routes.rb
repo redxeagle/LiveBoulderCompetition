@@ -27,6 +27,8 @@ Bws::Application.routes.draw do
       get :grafik
       get :relax
       get :power
+      get :mass_edit
+      put :mass_update
       post :relax
       post :power
       get :reload

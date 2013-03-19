@@ -17,6 +17,7 @@
                                       :method => :delete,
                                       :confirm => "Wirklich alle Begehungen und Benutzer löschen?"
             %li= link_to "Setting", settings_path
+            %li= link_to "Boulder editieren", mass_edit_boulders_path
     %div.span6#right
       = yield
 
