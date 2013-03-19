@@ -4,8 +4,8 @@ class Boulder < ActiveRecord::Base
   has_many :ascents
   has_many :participants, :through => :ascents
 
-  scope :power, where(:color => ['dunkel-grün', 'rot', 'grau'])
-  scope :relax, where(:color => ['blau und orange', 'weiß und gelb', 'grün', 'grau', 'rot'])
+  scope :power, where(:color => Setting.all.first.power_colors.split(', '))
+  scope :relax, where(:color => Setting.all.first.relax_colors.split(', '))
   scope :yellow, where(:color => 'gelb')
   scope :blue, where(:color => 'blau')
   scope :green, where(:color => 'grün')

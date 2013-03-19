@@ -1,8 +1,8 @@
 %p
   %div#tabs
     %ul
-      %li= link_to  "Boulder", "#tabs-1"
-      -#%li= link_to  "Power", "#tabs-2"
+      %li= link_to  "Relax", "#tabs-1"
+      %li= link_to  "Power", "#tabs-2"
     %div#tabs-1
       %table.table-striped.table-hover#table-relax-boulder.tablesorter
         %thead
@@ -18,18 +18,18 @@
               %td= boulder.color
               %td= boulder.count_relax_ascents
               %td= boulder.relax_points
-    -#%div#tabs-2
-    -#  %table.table-striped.table-hover#table-power-boulder.tablesorter
-    -#    %thead
-    -#      %tr
-    -#        %th Boulder Nummer
-    -#        %th Farbe
-    -#        %th Begehungen
-    -#        %th Punkte
-    -#    %tbody
-    -#      - @power_boulders.each do |boulder|
-    -#        %tr
-    -#          %td= link_to boulder.power_number, boulder
-    -#          %td= boulder.color
-    -#          %td= boulder.count_power_ascents
-    -#          %td= boulder.power_points
+    %div#tabs-2
+      %table.table-striped.table-hover#table-power-boulder.tablesorter
+        %thead
+          %tr
+            %th Boulder Nummer
+            %th Farbe
+            %th Begehungen
+            %th Punkte
+        %tbody
+          - @power_boulders.each do |boulder|
+            %tr
+              %td= link_to boulder.power_number, boulder
+              %td= boulder.color
+              %td= boulder.count_power_ascents
+              %td= boulder.power_points
