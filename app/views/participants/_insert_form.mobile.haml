@@ -2,25 +2,21 @@
   = form_for :participant do |form|
     - if !@participant.power
       %div{"data-role" => "collapsible"}
-        %h3= "Weiß/Gelb"
-        - @boulders.whiteyellow.sort_by{|b| b.id}.each do |boulder|
+        %h3= "Gelb"
+        - @boulders.yellow.sort_by{|b| b.id}.each do |boulder|
           %div{"data-role" => "fieldcontain"}
             - mobile_boulder_tag(@participant, boulder)
       %div{"data-role" => "collapsible"}
-        %h3= "blau/orange"
-        - @boulders.blueorange.sort_by{|b| b.id}.each do |boulder|
+        %h3= "blau"
+        - @boulders.blue.sort_by{|b| b.id}.each do |boulder|
           - mobile_boulder_tag(@participant, boulder)
       %div{"data-role" => "collapsible"}
         %h3= "grün"
         - @boulders.green.sort_by{|b| b.id}.each do |boulder|
           - mobile_boulder_tag(@participant, boulder)
       %div{"data-role" => "collapsible"}
-        %h3= "rot"
-        - @boulders.red.sort_by{|b| b.id}.each do |boulder|
-          - mobile_boulder_tag(@participant, boulder)
-      %div{"data-role" => "collapsible"}
-        %h3= "grau"
-        - @boulders.grey.sort_by{|b| b.id}.each do |boulder|
+        %h3= "dunkel grün"
+        - @boulders.darkgreen.sort_by{|b| b.id}.each do |boulder|
           - mobile_boulder_tag(@participant, boulder)
     - else
       %div{"data-role" => "collapsible"}
