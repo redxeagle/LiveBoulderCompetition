@@ -5,8 +5,9 @@
         %li= link_to  "gelb", "#tabs-1"
         %li= link_to  "blau", "#tabs-2"
         %li= link_to  "grün", "#tabs-3"
+        %li= link_to  "dunkel grün", "#tabs-4"
       - else
-        %li= link_to  "grün", "#tabs-1"
+        %li= link_to  "dunkel grün", "#tabs-1"
         %li= link_to  "rot", "#tabs-2"
         %li= link_to  "grau", "#tabs-3"
 
@@ -20,9 +21,12 @@
       %div#tabs-3
         - @boulders.green.sort_by{|b| b.id}.each do |boulder|
           - boulder_tag(@participant, boulder)
+      %div#tabs-4
+        - @boulders.darkgreen.sort_by{|b| b.id}.each do |boulder|
+          - boulder_tag(@participant, boulder)
     - else
       %div#tabs-1
-        - @boulders.green.sort_by{|b| b.id}.each do |boulder|
+        - @boulders.darkgreen.sort_by{|b| b.id}.each do |boulder|
           - boulder_tag(@participant, boulder)
       %div#tabs-2
         - @boulders.red.sort_by{|b| b.id}.each do |boulder|

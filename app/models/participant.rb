@@ -11,17 +11,24 @@ class Participant < ActiveRecord::Base
   scope :leipziger, where(:location => "Leipzig", :power => true)
   scope :berliner, where(:location => "Berlin", :power => true)
   scope :u_achtzehn, where(["age < 18 AND age > 12 "]).where(:power => true)
+  scope :u_achtzehn_men, where(["age < 18 AND age > 12 "]).where(:power => true, :gender => "männlich")
+  scope :u_achtzehn_women, where(["age < 18 AND age > 12 "]).where(:power => true, :gender => 'weiblich')
   scope :senior, where(["age > 39 "]).where(:power => true)
+  scope :senior_men, where(["age > 39 "]).where(:power => true, :gender => 'männlich')
+  scope :senior_women, where(["age > 39 "]).where(:power => true, :gender => 'weiblich')
   scope :city, where(:location => Setting.all.first.ranking_city)
+  scope :city_men, where(:location => Setting.all.first.ranking_city, :power => true, :gender => 'männlich')
+  scope :city_women, where(:location => Setting.all.first.ranking_city, :power => true, :gender => 'weiblich')
   scope :woman_relax, where(:power => false, :gender => 'weiblich')
-  scope :men_relax, where(:power => true, :gender => 'männlich')
+  scope :men_relax, where(:power => false, :gender => 'männlich')
   scope :woman_power, where(:power => true, :gender => 'weiblich')
   scope :men_power, where(:power => true, :gender => 'männlich')
   scope :kidsA, where(["age < 18 AND age > 15 "]).where(:power => false) # 16 -17
   scope :kidsB, where(["age < 16 AND age > 13 "]).where(:power => false) # 14 -15
   scope :kidsC, where(["age < 14 AND age > 11"]).where(:power => false) # 12 - 13
   scope :kidsE, where(["age < 12"]).where(:power => false) # 0 - 12
-  scope :senior, where(["age > 39"]).where(:power => false) # 40+
+  scope :kidsE_men, where(["age < 12"]).where(:power => false, :gender => "männlich") # 0 - 12
+  scope :kidsE_women, where(["age < 12"]).where(:power => false, :gender => "weiblich") # 0 - 12
 
   before_destroy :validation_for_names
 

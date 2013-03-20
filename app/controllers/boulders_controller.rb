@@ -33,6 +33,7 @@ class BouldersController < ApplicationController
     @cache_time = Rails.cache.fetch('time', :expires_in => cache_duration) { Time.now }
     @settings = Setting.all.first
     @participants_hash = {}
+    ranking_tabs = @settings.ranking_tabs.split(',')
 
     @participants_hash[:all] = Rails.cache.fetch('participants', :expires_in => cache_duration) {
                Participant.all.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
@@ -42,13 +43,17 @@ class BouldersController < ApplicationController
             Participant.relax.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
     end
 
-    @participants_hash[:relax_men] =  Rails.cache.fetch('participants_relax_men', :expires_in => cache_duration) do
-              Participant.men_relax.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+    if(ranking_tabs.include?("men_relax"))
+      @participants_hash[:relax_men] =  Rails.cache.fetch('participants_relax_men', :expires_in => cache_duration) do
+                Participant.men_relax.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
     end
 
-    @participants_hash[:relax_women] =  Rails.cache.fetch('participants_relax_woman', :expires_in => cache_duration) do
-          Participant.woman_relax.map{|e| [e.label, e.count_ascents, e.location,
-                                       e.points]}.sort_by{|u| u[3]}.reverse
+    if(ranking_tabs.include?("women_relax"))
+      @participants_hash[:relax_women] =  Rails.cache.fetch('participants_relax_woman', :expires_in => cache_duration) do
+            Participant.woman_relax.map{|e| [e.label, e.count_ascents, e.location,
+                                         e.points]}.sort_by{|u| u[3]}.reverse
+      end
     end
 
     if(@settings.power?)
@@ -63,15 +68,34 @@ class BouldersController < ApplicationController
       end
     end
 
-    unless(@settings.ranking_city.empty?)
+    if(!@settings.ranking_city.empty? && ranking_tabs.include?("city"))
       @participants_hash[:city] = Rails.cache.fetch('participants_city', :expires_in => cache_duration) do
                         Participant.city.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
       end
     end
-    ranking_tabs = @settings.ranking_tabs.split(',')
+    if(!@settings.ranking_city.empty? && ranking_tabs.include?("city_men"))
+      @participants_hash[:city_men] = Rails.cache.fetch('participants_city', :expires_in => cache_duration) do
+                        Participant.city_men.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
+    if(!@settings.ranking_city.empty? && ranking_tabs.include?("city_women"))
+      @participants_hash[:city_women] = Rails.cache.fetch('participants_city', :expires_in => cache_duration) do
+                        Participant.city_women.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
     if(ranking_tabs.include?("senior"))
       @participants_hash[:senior] = Rails.cache.fetch('participants_senior', :expires_in => cache_duration) do
         Participant.senior.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
+    if(ranking_tabs.include?("senior_men"))
+      @participants_hash[:senior_men] = Rails.cache.fetch('participants_senior', :expires_in => cache_duration) do
+        Participant.senior_men.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
+    if(ranking_tabs.include?("senior_women"))
+      @participants_hash[:senior_women] = Rails.cache.fetch('participants_senior', :expires_in => cache_duration) do
+        Participant.senior_women.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
       end
     end
     if(ranking_tabs.include?("kidsE"))
@@ -79,24 +103,30 @@ class BouldersController < ApplicationController
         Participant.kidsE.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
       end
     end
+    if(ranking_tabs.include?("kidsE_women"))
+      @participants_hash[:kidsE_women] = Rails.cache.fetch('participants_kidsE', :expires_in => cache_duration) do
+        Participant.kidsE_men.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
+    if(ranking_tabs.include?("kidsE_men"))
+      @participants_hash[:kidsE_men] = Rails.cache.fetch('participants_kidsE', :expires_in => cache_duration) do
+        Participant.kidsE_women.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
+    end
     if(ranking_tabs.include?("u_achtzehn"))
       @participants_hash[:u_achtzehn] = Rails.cache.fetch('participants_u_achtzehn', :expires_in => cache_duration) do
         Participant.u_achtzehn.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
       end
     end
-
-
-    @participants_A  = Rails.cache.fetch('participants_kidsA', :expires_in => cache_duration) do
-      Participant.kidsA.map{|e| [e.label, e.count_ascents, e.location,
-                                   e.points]}.sort_by{|u| u[3]}.reverse
+    if(ranking_tabs.include?("u_achtzehn_women"))
+      @participants_hash[:u_achtzehn_women] = Rails.cache.fetch('participants_u_achtzehn', :expires_in => cache_duration) do
+        Participant.u_achtzehn_women.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
     end
-    @participants_B  = Rails.cache.fetch('participants_kidsB', :expires_in => cache_duration) do
-      Participant.kidsB.map{|e| [e.label, e.count_ascents, e.location,
-                                   e.points]}.sort_by{|u| u[3]}.reverse
-    end
-    @participants_C  = Rails.cache.fetch('participants_kidsC', :expires_in => cache_duration) do
-      Participant.kidsC.map{|e| [e.label, e.count_ascents, e.location,
-                                   e.points]}.sort_by{|u| u[3]}.reverse
+    if(ranking_tabs.include?("u_achtzehn_men"))
+      @participants_hash[:u_achtzehn_men] = Rails.cache.fetch('participants_u_achtzehn', :expires_in => cache_duration) do
+        Participant.u_achtzehn_men.map{|e| [e.label, e.count_ascents, e.location, e.points]}.sort_by{|u| u[3]}.reverse
+      end
     end
   end
 
