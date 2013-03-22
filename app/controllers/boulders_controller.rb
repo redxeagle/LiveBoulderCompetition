@@ -137,6 +137,7 @@ class BouldersController < ApplicationController
   end
 
   def mass_update
+
     boulders = params[:boulders][:boulder_attributes]
 
     boulders.each do |key, value|
@@ -144,7 +145,13 @@ class BouldersController < ApplicationController
       boulder.update_attributes(value)
     end
 
+    count = params[:count]
 
+
+    while count.to_i - 1 >= Boulder.all.count
+      boulder = Boulder.new
+      boulder.save
+    end
 
     redirect_to root_path
   end

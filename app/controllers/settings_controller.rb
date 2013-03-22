@@ -9,6 +9,20 @@ class SettingsController < ApplicationController
     @setting = Setting.all.first
   end
 
+  def new_participant
+    @participant = Participant.all
+    if params[:participant]
+      last_id = Participant.last.uid + 15
+      for i in 0..params[:participant][:length].to_i
+        participant = Participant.new
+        participant.uid = last_id
+        participant.age = 1
+        participant.save!
+        last_id +=15
+      end
+    end
+  end
+
   def update
     @setting= Setting.all.first
     if @setting.update_attributes(params[:setting])

@@ -50,6 +50,10 @@ class Participant < ActiveRecord::Base
     end
   end
 
+  def length
+    Participant.all.count
+  end
+
   def points
     all_ascents = self.ascents.all
     return count(all_ascents)
